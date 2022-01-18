@@ -1,33 +1,37 @@
-var cityInputEl = document.querySelector("#search-bar");
-var formInputEl = document.querySelector('#form')
-var formSubmitHandler = function(event) {
-    event.preventDefault();
-    var city = cityInputEl.value.trim();
-    if (city) {
-        findCity(city);
-        cityInputEl.value ="";
-    }
-    else {
-        alert("help")
-    }
-    console.log(event);
-    window.city = city
-};
-var findCity = function(lat,lng){
-var weatherapi ='https://api.openweathermap.org/data/2.5/onecall?lat=' + lat + '&lon=' + lng + '&exclude=minutely,hourly&appid=ddce6e0f0b7c7edc2ab26d066d9a07e9'
-var geocoder = new google.maps.Geocoder();
-    geocoder.geocode({ address: city }, (results, status) => {
-        if (status === "OK") {
-            var lat = results[0].geometry.location.lat();
-            var lng = results[0].geometry.location.lng();
-            console.log(lat);
-        } 
-        else {
-            alert("Geocode error: " + status);
-        }	 
-    })
-};
-formInputEl.addEventListener("submit",formSubmitHandler);
 
-document.getElementById("search-btn").addEventListener("click",findCity())
- 
+
+function getWeather(city) {
+    var apiUrl = `https://api.openweathermap.org/geo/1.0/direct?q=nashville&appid=ddce6e0f0b7c7edc2ab26d066d9a07e9`
+    fetch(apiUrl)
+        .then(function(response) {
+           return response.json()
+        })
+        .then(function(data){
+            if (data.length === 0) {
+                defaultPage();
+
+                alert("Could not find City");
+
+            } else {
+                console.log("location", data);
+
+                var currentDate = moment().format("(MM/DD/YYYY)");
+                console.log("Current date: ", currentDate);
+
+                var lon = data[0].lon
+                var lat= data[0].lat
+                
+                var cityWeatherUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&appid=ddce6e0f0b7c7edc2ab26d066d9a07e9`
+
+                fetch(cityWeatherUrl)
+                    .then(function(response) {
+                        return response.json()
+                    })
+                    .then(function(data) {
+                        console.log("weather", data);
+                    })
+                };
+            })
+        };
+
+getWeather();

@@ -4,37 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <title>Weather App</title>
 </head>
 <body>
-    <header class="">
+    <header class="header">
         <h1>Weather Dashboard</h1>
     </header>
-<section>
-    <form id="form">
-        <label class="search" for="city">Search for a City</label> 
-        <input name="city" id="search-bar" type="text" placeholder="City Name">
-        <button type="submit" class="btn" id="search-btn">Search</button>
-    </form>
-    <div class="search-list">
-        <div class="search-results"> 
-        </div>
+    <div class="container-fluid row">
+        <section class="col-3">
+            <form id="form container-fluid">
+                <label class="search col-12" for="city">Search for a City</label> 
+                <input class= "col-12" name="city" id="search-bar" type="text" placeholder="City Name">
+                <button type="submit" class="btn" id="search-btn">Search</button>
+            </form>
+            <div class="search-list">
+                <div class="past-results"> 
+                </div>
+            </div>
+        </section>
+        <section class="col-9 search-results">
+            <div>
+                <div class="row basic-info">
+                    <h3 id="city-name">city</h3>
+                    <h3 id="current-date">date</h3>
+                    <img id="icon"></img>
+                </div>
+                <div>
+                    <p>Temperature: <span id="temperature-value"></span></p>
+                    <p>Wind Speed: <span id="windspeed-value"></span></p>
+                    <p>Humidity: <span id="humidity-value"></span></p>
+                    <p>UV Index: <span id="uv-value"></span></p>
+                </div>
+            </div>
+            <div id="card-box">
+                <h3 class="col-12">5-Day Forecast</h3>
+                <div class="col-12" id="forcast-card"> cards go here</div>
+            </div>
+        </section>
     </div>
-</section>
-<section>
-    <div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-    </div>
-    <div>
-        <div></div>
-    </div>
-</section>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 <script src="assets/script.js"></script>

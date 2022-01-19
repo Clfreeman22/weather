@@ -19,16 +19,14 @@
                 <input class= "col-12" name="city" id="search-bar" type="text" placeholder="City Name">
                 <button type="submit" class="btn" id="search-btn">Search</button>
             </form>
-            <div class="search-list">
-                <div class="past-results"> 
-                </div>
+            <div id="search-list">
             </div>
         </section>
         <section class="col-9 search-results">
-            <div>
+            <div class="current-forcast col-12 border border-dark">
                 <div class="row basic-info">
-                    <h3 id="city-name">city</h3>
-                    <h3 id="current-date">date</h3>
+                    <h3 id="city-name">City</h3>
+                    <h3 id="current-date"></h3>
                     <img id="icon"></img>
                 </div>
                 <div>
@@ -40,7 +38,7 @@
             </div>
             <div id="card-box">
                 <h3 class="col-12">5-Day Forecast</h3>
-                <div class="col-12" id="forcast-card"> cards go here</div>
+                <div id="forecast-card"> cards go here</div>
             </div>
         </section>
     </div>
